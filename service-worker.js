@@ -1,4 +1,8 @@
-const CACHE_NAME = 'pdf-app-cache-v2';
+// Fast update + offline caching
+self.addEventListener('install', () => self.skipWaiting());
+self.addEventListener('activate', (e) => e.waitUntil(self.clients.claim()));
+
+const CACHE_NAME = 'pdf-full-cache-v1';
 const PRECACHE = [
   './',
   './index.html',
