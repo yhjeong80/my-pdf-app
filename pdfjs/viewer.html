@@ -3,46 +3,28 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1, user-scalable=no">
-  <title>PDF Viewer (Full)</title>
+  <title>PDF Viewer</title>
   <link rel="stylesheet" href="viewer.css">
-  <!-- PDF.js CDN -->
+  <!-- PDF.js via CDN -->
   <script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.min.js"></script>
   <script>
     pdfjsLib.GlobalWorkerOptions.workerSrc = "https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.worker.min.js";
   </script>
 </head>
 <body>
-  <div class="topbar">
-    <div class="left">
-      <button id="toggle-sidebar" title="썸네일 보이기/숨기기">☰</button>
-      <button id="prev" title="이전 페이지">◀</button>
-      <span>페이지 <input id="page-num" type="number" min="1" value="1"> / <span id="page-count">1</span></span>
-      <button id="next" title="다음 페이지">▶</button>
-    </div>
-    <div class="right">
-      <input id="search-input" type="text" placeholder="검색어…" title="Enter로 다음 찾기">
-      <button id="search-prev" title="이전 결과">↑</button>
-      <button id="search-next" title="다음 결과">↓</button>
-      <button id="zoom-out" title="축소">－</button>
-      <span id="zoom">100%</span>
-      <button id="zoom-in" title="확대">＋</button>
-      <button id="fit-width" title="폭 맞춤">폭 맞춤</button>
-    </div>
+  <div class="toolbar">
+    <button id="prev">◀</button>
+    <span>페이지 <input id="page-num" type="number" min="1" value="1"> / <span id="page-count">1</span></span>
+    <button id="next">▶</button>
+    <span class="spacer"></span>
+    <button id="zoom-out">－</button>
+    <span id="zoom">100%</span>
+    <button id="zoom-in">＋</button>
+    <button id="fit-width">폭 맞춤</button>
   </div>
-
-  <div class="container">
-    <aside id="sidebar">
-      <div id="thumbs"></div>
-    </aside>
-    <main id="main">
-      <div id="viewer-wrap">
-        <canvas id="pdf-canvas"></canvas>
-      </div>
-    </main>
+  <div id="viewer-wrap">
+    <canvas id="pdf-render"></canvas>
   </div>
-
-  <div id="status"></div>
-
   <script src="app.js"></script>
 </body>
 </html>
